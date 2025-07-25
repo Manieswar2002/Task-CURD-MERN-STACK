@@ -1,0 +1,125 @@
+.tasklist-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.task-header h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.logout-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+.task-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.task-input input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.task-input button {
+  padding: 10px 16px;
+  background-color: #2f855a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.task-input button:hover {
+  background-color: #0056b3;
+}
+
+
+.task-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-item span {
+  font-size: 16px;
+  color: #333;
+}
+
+.task-item .completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.task-actions button {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.task-actions button:hover {
+  opacity: 0.85;
+}
+
+.task-actions .delete-button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.task-actions .delete-button:hover {
+  background-color: #c0392b;
+}
+
+.task-actions button:not(.delete-button) {
+  background-color: #28a745;
+  color: white;
+}
+
+.task-actions button:not(.delete-button):hover {
+  background-color: #218838;
+}
