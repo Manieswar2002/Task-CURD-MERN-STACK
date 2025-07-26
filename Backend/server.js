@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 
 
 app.use(cors({
-  origin: 'https://task-curd-mern-stack-rn9n.vercel.app/',
+  origin: 'https://task-curd-mern-stack-rn9n.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true 
 }));
