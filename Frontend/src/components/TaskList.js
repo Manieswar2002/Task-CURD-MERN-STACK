@@ -15,7 +15,7 @@ const TaskList = ({ token, logout }) => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/tasks', {
+        const res = await axios.get('https://task-curd-mern-stack.onrender.com/api/tasks', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTasks(res.data);
@@ -33,7 +33,7 @@ const TaskList = ({ token, logout }) => {
       return;
     }
     try {
-      const res = await axios.post('http://localhost:5000/api/tasks', { title }, {
+      const res = await axios.post('https://task-curd-mern-stack.onrender.com/api/tasks', { title }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTasks([...tasks, res.data]);
@@ -46,7 +46,7 @@ const TaskList = ({ token, logout }) => {
 
   const updateTask = async (id) => {
     try {
-      const res = await axios.put(`http://localhost:5000/api/tasks/${id}`, {
+      const res = await axios.put(`https://task-curd-mern-stack.onrender.com/api/tasks/${id}`, {
         title: editTitle,
       }, {
         headers: { Authorization: `Bearer ${token}` },
@@ -62,7 +62,7 @@ const TaskList = ({ token, logout }) => {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`, {
+      await axios.delete(`https://task-curd-mern-stack.onrender.com/api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTasks(tasks.filter(t => t._id !== id));
