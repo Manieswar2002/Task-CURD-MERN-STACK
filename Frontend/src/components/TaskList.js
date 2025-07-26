@@ -10,6 +10,8 @@ const TaskList = ({ token, logout }) => {
   const [editId, setEditId] = useState(null);
   const [editTitle, setEditTitle] = useState('');
 
+  const username = localStorage.getItem('username');
+
   useEffect(() => {
     const fetchTasks = async () => {
       try {
@@ -73,7 +75,7 @@ const TaskList = ({ token, logout }) => {
   return (
     <div className="tasklist-container animated-card">
       <div className="task-header">
-        <h2>Your Tasks</h2>
+        <h2>{username ? `Welcome, ${username} 👋` : 'Your Tasks'}</h2> 
         <button onClick={logout} className="logout-button">Logout</button>
       </div>
       <div className="task-input">
@@ -101,14 +103,10 @@ const TaskList = ({ token, logout }) => {
               {editId === task._id ? (
                 <button onClick={() => updateTask(task._id)}>Update</button>
               ) : (
-                <button
-                  onClick={() => {
-                    setEditId(task._id);
-                    setEditTitle(task.title);
-                  }}
-                >
-                  Edit
-                </button>
+                <button onClick={() => {
+                  setEditId(task._id);
+                  setEditTitle(task.title);
+                }}>Edit</button>
               )}
               <button onClick={() => deleteTask(task._id)} className="delete-button">
                 Delete

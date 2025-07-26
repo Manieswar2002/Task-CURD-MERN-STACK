@@ -4,7 +4,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from '@mui/material/Button';
 
-
 const Login = ({ setToken }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -23,33 +22,19 @@ const Login = ({ setToken }) => {
 
       if (res.ok && data.token) {
         localStorage.setItem('token', data.token);
+        localStorage.setItem('username', data.username);
         setToken(data.token);
 
         toast.success('Login successful!', {
           position: 'top-right',
           autoClose: 3000,
-          style: {
-            borderRadius: '20px',
-          }
         });
       } else {
-        toast.error('Login failed!', {
-          position: 'top-right',
-          autoClose: 3000,
-          style: {
-            borderRadius: '20px',
-          }
-        });
+        toast.error(data.error || 'Login failed!');
       }
     } catch (err) {
-      console.error('Error logging in:', err);
-      toast.error('Something went wrong. Please try again.', {
-        position: 'top-right',
-        autoClose: 3000,
-        style: {
-          borderRadius: '20px',
-        }
-      });
+      console.error('Login error:', err);
+      toast.error('Something went wrong. Please try again.');
     }
   };
 
@@ -72,19 +57,11 @@ const Login = ({ setToken }) => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-       <Button
-        type="submit"
-        variant="contained"
-        color="success"
-        fullWidth
-        sx={{ padding: '12px', fontSize: '16px', borderRadius: '6px' }}
-      >
-        Login
-      </Button>
+        <Button type="submit" variant="contained" color="success" fullWidth>
+          Login
+        </Button>
       </form>
-      <p>
-        Don't have an account? <a href="/register">Register</a>
-      </p>
+      <p>Don't have an account? <a href="/register">Register</a></p>
       <ToastContainer />
     </div>
   );
