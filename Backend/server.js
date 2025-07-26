@@ -10,6 +10,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const allowedOrigin = 'https://task-curd-mern-stack-rn9n.vercel.app';
+
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://task-curd-mern-stack-rn9n.vercel.app');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
@@ -21,12 +23,17 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors({
-  origin: 'https://task-curd-mern-stack-rn9n.vercel.app',
+const corsOptions = {
+  origin: allowedOrigin,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
+
+// ✅ CRUCIAL: Preflight requests need this
+app.options('*', cors(corsOptions));
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
